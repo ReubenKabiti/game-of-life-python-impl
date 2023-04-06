@@ -6,6 +6,9 @@ class Grid:
     def __init__(self, nr, nc):
 
         self.grid = np.zeros((nr, nc))
+    
+    def clear(self):
+        self.grid = np.zeros(self.grid.shape)
 
     def update(self, display_size):
         # update each cell
@@ -90,8 +93,8 @@ class Grid:
                 x = int(u * dw)
                 y = int(v * dh)
 
-                color = 200
+                color = (int(0xf8), int(0x83), int(79))
                 if col >= 0.4:
-                    color = 0
-                pygame.draw.rect(display, (color, color, color), pygame.Rect((x, y), (rw, rh)))
+                    color = (0, 0, 0)
+                pygame.draw.rect(display, color, pygame.Rect((x, y), (rw, rh)))
                 pygame.draw.rect(display, (0, 0, 0), pygame.Rect((x, y), (rw, rh)), 1)

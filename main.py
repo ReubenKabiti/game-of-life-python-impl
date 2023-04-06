@@ -8,7 +8,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((config.DISPLAY_WIDTH, config.DISPLAY_HEIGHT))
-        self.grid = grid.Grid(30, 30)
+        self.grid = grid.Grid(50, 50)
 
         self.is_playing = False
 
@@ -33,7 +33,8 @@ class Game:
                 else:
                     enter_pressed_cur = False
                 enter_pressed_before = True
-
+            elif pygame.key.get_pressed()[pygame.K_RETURN]:
+                self.grid.clear()
             else:
                 enter_pressed_cur = False
                 enter_pressed_before = False
