@@ -92,9 +92,8 @@ class Grid:
 
                 x = int(u * dw)
                 y = int(v * dh)
-
-                color = (int(0xf8), int(0x83), int(79))
+                color = (int(0xf8), int(0x83), int(79), 255)
                 if col >= 0.4:
-                    color = (0, 0, 0)
+                    color = (0, 0, 0, 0)
                 pygame.draw.rect(display, color, pygame.Rect((x, y), (rw, rh)))
                 pygame.draw.rect(display, (0, 0, 0), pygame.Rect((x, y), (rw, rh)), 1)

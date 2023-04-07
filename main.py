@@ -20,6 +20,17 @@ class Game:
         clock = pygame.time.Clock()
         font = pygame.font.SysFont("arial", 32)
 
+        background_image = None
+        grid_surface = None
+
+        try:
+            background_image = pygame.image.load("background.jpg")
+            background_image = pygame.transform.scale(background_image, (config.DISPLAY_WIDTH, config.DISPLAY_HEIGHT))
+            grid_surface = pygame.surface.Surface((config.DISPLAY_WIDTH, config.DISPLAY_HEIGHT)).convert_alpha()
+
+        except:
+            grid_surface = pygame.surface.Surface((config.DISPLAY_WIDTH, config.DISPLAY_HEIGHT))
+
         while True:
             
             for event in pygame.event.get():
@@ -51,9 +62,14 @@ class Game:
                 msg = "PAUSED || (PRESS SPACE)"
 
             self.screen.fill((200, 200, 200))
+            grid_surface.fill((0, 0, 0, 255))
 
             text = font.render(msg, 32, (255, 255, 255))
-            self.grid.draw(self.screen)
+            if background_image:
+                self.screen.blit(background_image, (0, 0))
+
+            self.grid.draw(grid_surface)
+            self.screen.blit(grid_surface, (0, 0))
             self.screen.blit(text, (200, 10))
             pygame.display.update()
 
