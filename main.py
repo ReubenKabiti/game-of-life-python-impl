@@ -14,8 +14,8 @@ class Game:
 
     def main_loop(self):
 
-        enter_pressed_before = False
-        enter_pressed_cur = False
+        space_pressed_before = False
+        space_pressed_cur = False
 
         clock = pygame.time.Clock()
         font = pygame.font.SysFont("arial", 32)
@@ -39,18 +39,18 @@ class Game:
                     sys.exit()
 
             if pygame.key.get_pressed()[pygame.K_SPACE]:
-                if not enter_pressed_before:
-                    enter_pressed_cur = True
+                if not space_pressed_before:
+                    space_pressed_cur = True
                 else:
-                    enter_pressed_cur = False
-                enter_pressed_before = True
+                    space_pressed_cur = False
+                space_pressed_before = True
             elif pygame.key.get_pressed()[pygame.K_RETURN]:
                 self.grid.clear()
             else:
-                enter_pressed_cur = False
-                enter_pressed_before = False
+                space_pressed_cur = False
+                space_pressed_before = False
 
-            if enter_pressed_cur:
+            if space_pressed_cur:
                 self.is_playing = not self.is_playing
 
             msg = ""
